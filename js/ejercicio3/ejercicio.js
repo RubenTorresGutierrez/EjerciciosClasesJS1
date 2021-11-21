@@ -1,27 +1,38 @@
-/*  ejercicio.js
-    Ejercicios Clases JS 1 | Ejercicio 2
-    Autor: Rubén Torres Gutiérrez <rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net>
-    Licencia: GPL v3 o superior
-    Año: 2021
+/**
+*   @file ejercicio3
+*   @description Crear una clase herencia de la anterior capaz de crear el volúmen del cilindro.
+*       a. Constructor.prototype.propiedad = valor;
+*       b. rectangulo.prototype.metodo = get_metodo;
+*   @version 1.0.0
+*   @author Rubén Torres <rtorresgutierrez.guadalupe@alumnado.fundacionloyola.net>
+*   @license GPL-3.0-or-later
+*   Ref: https://spdx.org/licenses/
+*
+*   Ref JSDoc: https://jsdoc.app/
 */
+'use strict'
 
-import { Cilindro } from "./cilindro.js";
+// IMPORTACIONES
+import {Circulo} from './circulo.js';
 
-export class Circulo{
+class Cilindro extends Circulo{
 
-    constructor(r){
-        this.r = r;
-        window.onload = this.iniciar.bind(this);
+    constructor(r, h){
+
+        super(r);
+        this.h = h;
+
     }
-    iniciar(){
-        this.calcularArea();
-        this.cilindro = new Cilindro(4, 20);
-        cilindro.prototype.calcularVolumen();
-    }
-    calcularArea(){
-        console.log(`El área del circulo es ${2 * Math.PI * this.r}`);
+
+    calcularVolumen(){
+
+        return this.calcularArea() * this.h;
+        
     }
 
 }
 
-new Circulo(4);
+let app = new Cilindro(2, 20);
+
+console.log(`El área del circulo es ${app.calcularArea()}`);
+console.log(`El volumen del cilindro es ${app.calcularVolumen()}`);
